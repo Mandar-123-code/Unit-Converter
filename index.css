@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+  background: #222;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+  font-size: 24px;
+  color: #00ffc3;
+}
+
+#theme-toggle {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #00ffc3;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.converter {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 60px auto;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.converter h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.converter label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  color: #333;
+}
+
+.converter input,
+.converter select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.converter select {
+  cursor: pointer;
+}
+
+.converter input:focus,
+.converter select:focus {
+  outline: none;
+  border-color: #00ffc3;
+  box-shadow: 0 0 5px rgba(0, 255, 195, 0.5);
+}
+
+.result {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #e9f7ef;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #2d8659;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+.dark-mode .navbar {
+  background: #000;
+}
+
+.dark-mode .navbar h1 {
+  color: #adff2f;
+}
+
+.dark-mode #theme-toggle {
+  background-color: #ff8c00;
+  color: #000;
+}
+
+.dark-mode .converter {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.dark-mode input,
+.dark-mode select {
+  background-color: #2e2e2e;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.dark-mode .result {
+  background-color: #2f4f4f;
+  color: #adff2f;
+  box-shadow: 0 0 10px #adff2f88;
+  border: 1px solid #adff2f;
+}
+
+.dark-mode .converter label {
+  color: #ddd;
+}
+
+.dark-mode .converter h2 {
+  color: #ddd;
+}
+
+.dark-mode input::placeholder {
+  color: #bbb;
+}
+
+@media (max-width: 600px) {
+  .converter {
+    max-width: 95%;
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar h1 {
+    font-size: 20px;
+  }
+
+  #theme-toggle {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
