@@ -1,67 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Smart Unit Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="index.png" />
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Smart Unit Converter</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="index.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
 
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-    };
-  </script>
-
-  <style>
-    .fade-in {
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
+    <style>
+      .fade-in {
+        animation: fadeIn 0.4s ease-in-out;
       }
 
-      to {
-        opacity: 1;
-        transform: scale(1);
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
-    }
-  </style>
+    </style>
+  </head>
 
-  <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
+  <body
+    class="bg-gradient-to-br m-0 from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 min-h-screen flex flex-col items-center transition"
+  >
 
-    <div class="navbar w-full flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 
-              bg-gradient-to-r from-indigo-600 to-purple-600
-              dark:from-indigo-800 dark:to-purple-800
-              text-white shadow-2xl rounded-b-3xl">
-      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide mb-4 sm:mb-0">Smart Unit Converter</h1>
-      <button id="theme-toggle" class="text-lg px-6 py-3 rounded-full bg-white dark:bg-gray-700 dark:text-white 
-                   text-gray-900 font-medium hover:bg-gray-100 dark:hover:bg-gray-600 shadow transition">
-        Dark Mode
+    <div
+      class="navbar w-full m-0 flex justify-between items-center p-4 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-800 dark:to-purple-800 text-white shadow-xl rounded-none"
+    >
+      <h1 class="text-xl sm:text-2xl font-extrabold tracking-wide">
+        Smart Unit Converter
+      </h1>
+
+      <button
+        id="theme-toggle"
+        class="text-sm sm:text-lg px-4 py-2 rounded-full bg-white dark:bg-gray-700 dark:text-white text-gray-900 font-medium hover:bg-gray-100 dark:hover:bg-gray-600 shadow transition"
+      >
+        🌙 Dark Mode
       </button>
     </div>
 
-    <div class="flex-1 flex items-center justify-center px-4 py-8 sm:py-12">
+ 
+    <div class="flex-col w-full flex items-center justify-center p-4">
       <div
-        class="converter w-full max-w-2xl bg-white dark:bg-gray-800 
-                p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl transition hover:shadow-3xl hover:scale-[1.02] duration-300 fade-in">
-
-        <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-indigo-700 dark:text-indigo-300 tracking-wide">
+        class="converter w-full max-w-3xl bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-3xl shadow-2xl transition hover:shadow-3xl hover:scale-[1.02] duration-300 fade-in"
+      >
+        <h2
+          class="text-xl sm:text-2xl font-bold mb-6 text-center text-indigo-700 dark:text-indigo-300 tracking-wide"
+        >
           Unit Converter
         </h2>
 
         <div class="space-y-6">
           <div>
-            <label for="category" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Select Unit
-              Type:</label>
-            <select id="category"
-              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
-                         bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base">
+            <label for="category" class="block mb-2 font-medium dark:text-white"
+              >Select Unit Type:</label
+            >
+            <select
+              id="category"
+              class="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            >
               <option value="length">Length (meter ↔ kilometer)</option>
               <option value="weight">Weight (kilogram ↔ gram)</option>
               <option value="temperature">Temperature (°C ↔ °F)</option>
@@ -74,45 +81,55 @@
           </div>
 
           <div>
-            <label for="value" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Enter Value:</label>
-            <input type="number" id="value" placeholder="Enter a value"
-              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
-                        bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base" />
+            <label for="value" class="block mb-2 font-medium dark:text-white"
+              >Enter Value:</label
+            >
+            <input
+              type="number"
+              id="value"
+              placeholder="Enter a value"
+              class="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
           </div>
 
           <div>
-            <label for="direction" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Conversion
-              Direction:</label>
-            <select id="direction"
-              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
-                         bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base">
+            <label
+              for="direction"
+              class="block mb-2 font-medium dark:text-white"
+              >Conversion Direction:</label
+            >
+            <select
+              id="direction"
+              class="w-full p-4 rounded-2xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            >
               <option value="forward">Forward</option>
               <option value="reverse">Reverse</option>
             </select>
           </div>
 
-          <div id="result"
-            class="result mt-6 p-5 sm:p-6 rounded-2xl bg-indigo-50 dark:bg-indigo-900 
-                    text-gray-900 dark:text-indigo-100 text-center text-lg sm:text-xl font-medium fade-in shadow-inner">
+          <div
+            id="result"
+            class="mt-6 p-5 rounded-2xl bg-indigo-50 dark:bg-indigo-900 text-gray-900 dark:text-indigo-100 text-center text-lg font-medium fade-in shadow-inner"
+          >
             Result will appear here
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    const toggle = document.getElementById("theme-toggle");
+    <script>
+      const toggleBtn = document.getElementById("theme-toggle");
 
-    toggle.innerText = document.documentElement.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+      toggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark"); // html tag par
+        toggleBtn.textContent = document.documentElement.classList.contains(
+          "dark"
+        )
+          ? "☀️ Light Mode"
+          : "🌙 Dark Mode";
+      });
+    </script>
 
-    toggle.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
-      toggle.innerText = document.documentElement.classList.contains("dark") ? "Light Mode" : "Dark Mode";
-    });
-  </script>
-
-  <script src="index.js"></script>
+    <script src="index.js"></script>
   </body>
-
 </html>

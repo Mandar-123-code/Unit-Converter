@@ -83,6 +83,3 @@ category.addEventListener("change", convert);
 valueInput.addEventListener("input", convert);
 direction.addEventListener("change", convert);
 
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
