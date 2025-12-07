@@ -1,12 +1,32 @@
 (function () {
 
+let liveRate = null;
+
+
+async function fetchLiveRate() {
+  try {
+    const res = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+    const data = await res.json();
+    liveRate = data.rates.INR; 
+  } catch (error) {
+    liveRate = null; 
+  }
+}
+
+fetchLiveRate();
+
+
+setInterval(fetchLiveRate, 600000);
+
+
+
 const category = document.getElementById("category");
 const valueInput = document.getElementById("value");
 const direction = document.getElementById("direction");
 const result = document.getElementById("result");
 
 
-function convert() {
+async function convert() {
   const val = parseFloat(valueInput.value);
   if (isNaN(val)) {
     result.textContent = "Please enter a valid number";
@@ -68,10 +88,18 @@ function convert() {
       break;
 
     case "currency":
-      res =
-        dir === "forward"
-          ? `${val} INR = ${(val / 83.15).toFixed(2)} USD`
-          : `${val} USD = ${(val * 83.15).toFixed(2)} INR`;
+
+      if (liveRate !== null) {
+        res =
+          dir === "forward"
+            ? `${val} INR = ${(val / liveRate).toFixed(2)} USD (Live Rate)`
+            : `${val} USD = ${(val * liveRate).toFixed(2)} INR (Live Rate)`;
+      } else {
+        res =
+          dir === "forward"
+            ? `${val} INR = ${(val / 83.15).toFixed(2)} USD`
+            : `${val} USD = ${(val * 83.15).toFixed(2)} INR`;
+      }
       break;
 
     default:
@@ -86,5 +114,4 @@ valueInput.addEventListener("input", convert);
 direction.addEventListener("change", convert);
 
 
-
-})();
+})(); 
