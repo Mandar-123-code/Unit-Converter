@@ -1,44 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Smart Unit Converter</title>
-    <link rel="icon" href="index.png" type="image/x-icon" />
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <div class="navbar">
-      <h1>Smart Unit Converter</h1>
-      <button id="theme-toggle">🌙</button>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Unit Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="index.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
+
+  <style>
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+
+  <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
+
+    <div class="navbar w-full flex flex-col sm:flex-row justify-between items-center p-4 sm:p-6 
+              bg-gradient-to-r from-indigo-600 to-purple-600
+              dark:from-indigo-800 dark:to-purple-800
+              text-white shadow-2xl rounded-b-3xl">
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide mb-4 sm:mb-0">Smart Unit Converter</h1>
+      <button id="theme-toggle" class="text-lg px-6 py-3 rounded-full bg-white dark:bg-gray-700 dark:text-white 
+                   text-gray-900 font-medium hover:bg-gray-100 dark:hover:bg-gray-600 shadow transition">
+        Dark Mode
+      </button>
     </div>
 
-    <div class="converter">
-      <h2>Unit Converter</h2>
+    <div class="flex-1 flex items-center justify-center px-4 py-8 sm:py-12">
+      <div
+        class="converter w-full max-w-2xl bg-white dark:bg-gray-800 
+                p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl transition hover:shadow-3xl hover:scale-[1.02] duration-300 fade-in">
 
-      <label for="category">Select Unit Type:</label>
-      <select id="category">
-        <option value="length">Length (meter ↔ kilometer)</option>
-        <option value="weight">Weight (kilogram ↔ gram)</option>
-        <option value="temperature">Temperature (°C ↔ °F)</option>
-        <option value="time">Time (hours ↔ minutes)</option>
-        <option value="area">Area (sq meter ↔ sq feet)</option>
-        <option value="volume">Volume (liter ↔ milliliters)</option>
-        <option value="speed">Speed (km/h ↔ mph)</option>
-        <option value="currency">Currency (INR ↔ USD)</option>
-      </select>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-center text-indigo-700 dark:text-indigo-300 tracking-wide">
+          Unit Converter
+        </h2>
 
-      <label for="value">Enter Value:</label>
-      <input type="number" id="value" placeholder="Enter a value" />
+        <div class="space-y-6">
+          <div>
+            <label for="category" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Select Unit
+              Type:</label>
+            <select id="category"
+              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
+                         bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base">
+              <option value="length">Length (meter ↔ kilometer)</option>
+              <option value="weight">Weight (kilogram ↔ gram)</option>
+              <option value="temperature">Temperature (°C ↔ °F)</option>
+              <option value="time">Time (hours ↔ minutes)</option>
+              <option value="area">Area (sq meter ↔ sq feet)</option>
+              <option value="volume">Volume (liter ↔ milliliters)</option>
+              <option value="speed">Speed (km/h ↔ mph)</option>
+              <option value="currency">Currency (INR ↔ USD)</option>
+            </select>
+          </div>
 
-      <label for="direction">Conversion Direction:</label>
-      <select id="direction">
-        <option value="forward">↪ Forward</option>
-        <option value="reverse">↩ Reverse</option>
-      </select>
+          <div>
+            <label for="value" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Enter Value:</label>
+            <input type="number" id="value" placeholder="Enter a value"
+              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
+                        bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base" />
+          </div>
 
-      <div class="result" id="result">Result will appear here</div>
+          <div>
+            <label for="direction" class="block mb-2 font-medium dark:text-white text-sm sm:text-base">Conversion
+              Direction:</label>
+            <select id="direction"
+              class="w-full p-3 sm:p-4 rounded-2xl border border-gray-300 dark:border-gray-600 
+                         bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition text-sm sm:text-base">
+              <option value="forward">Forward</option>
+              <option value="reverse">Reverse</option>
+            </select>
+          </div>
+
+          <div id="result"
+            class="result mt-6 p-5 sm:p-6 rounded-2xl bg-indigo-50 dark:bg-indigo-900 
+                    text-gray-900 dark:text-indigo-100 text-center text-lg sm:text-xl font-medium fade-in shadow-inner">
+            Result will appear here
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="index.js"></script>
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+
+    toggle.innerText = document.documentElement.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+
+    toggle.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      toggle.innerText = document.documentElement.classList.contains("dark") ? "Light Mode" : "Dark Mode";
+    });
+  </script>
+
+  <script src="index.js"></script>
   </body>
+
 </html>
