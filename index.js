@@ -1,8 +1,10 @@
+(function () {
+
 const category = document.getElementById("category");
 const valueInput = document.getElementById("value");
 const direction = document.getElementById("direction");
 const result = document.getElementById("result");
-const toggleBtn = document.getElementById("theme-toggle");
+
 
 function convert() {
   const val = parseFloat(valueInput.value);
@@ -83,3 +85,6 @@ category.addEventListener("change", convert);
 valueInput.addEventListener("input", convert);
 direction.addEventListener("change", convert);
 
+
+
+})();
