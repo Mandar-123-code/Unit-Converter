@@ -97,8 +97,8 @@ async function convert() {
       } else {
         res =
           dir === "forward"
-            ? `${val} INR = ${(val / 83.15).toFixed(2)} USD`
-            : `${val} USD = ${(val * 83.15).toFixed(2)} INR`;
+            ? `${val} INR = ${(val / 90.57).toFixed(2)} USD`
+            : `${val} USD = ${(val * 90.57).toFixed(2)} INR`;
       }
       break;
 
@@ -115,3 +115,4 @@ direction.addEventListener("change", convert);
 
 
 })(); 
+
